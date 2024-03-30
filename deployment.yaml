@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-app-deployment
+  labels:
+    app: hello-world-app
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: hello-world-app
+  template:
+    metadata:
+      labels:
+        app: hello-world-app
+    spec:
+      containers:
+      - name: hello-world-app-deployment
+        image: asia-south1-docker.pkg.dev/august-monolith-418704/app-image/hello-world-image:latest
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 3000
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 3000
+        resources:
+          requests:
+            cpu: "100m"
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
