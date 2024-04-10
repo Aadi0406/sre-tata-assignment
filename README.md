@@ -51,4 +51,4 @@ c. kubectl create -f service.yaml <br />
 
 ![image](https://github.com/Aadi0406/sre-tata-assignment/assets/89530763/1496c04b-9831-4529-ab57-681a8256d4c6) <br />
 
-#Endpoint to access application - http://35.200.174.218:3000/
+#Endpoint to access application - http://35.200.222.48:3000/
